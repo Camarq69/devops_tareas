@@ -1,0 +1,23 @@
+name: CI
+
+# Evento que dispara el workflow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-bash-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run bash script
+        run: |
+          chmod +x ./info_usuario.sh
+          ./info_usuario.sh
